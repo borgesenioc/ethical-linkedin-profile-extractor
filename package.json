@@ -1,0 +1,23 @@
+{
+  "name": "linkedin-private-extractor",
+  "version": "1.0.0",
+  "description": "A simple and fast LinkedIn web app to extract your LinkedIn profile to CSV.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/borgesenioc/linkedin-private-extractor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/borgesenioc/linkedin-private-extractor/issues"
+  },
+  "homepage": "https://github.com/borgesenioc/linkedin-private-extractor#readme",
+  "dependencies": {
+    "axios": "^1.7.9"
+  }
+}
