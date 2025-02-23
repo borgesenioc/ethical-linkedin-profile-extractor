@@ -35,12 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
           try {
             const checkRes = await fetch(`/api/checkSnapshot?snapshotId=${snapshotId}`);
             if (!checkRes.ok) throw new Error("Check snapshot failed");
-            // If still running, it returns { status: "running" }
-            // If ready, it returns CSV as a download
-            // We can detect if the response is JSON or CSV
+  
+            // If still running => { status: "running" }
+            // If ready => returns CSV
             const contentType = checkRes.headers.get("content-type");
             if (contentType.includes("application/json")) {
-              // It's likely still running
+              // It's likely still "running"
               const data = await checkRes.json();
               if (data.status === "running") {
                 if (retries < maxRetries) {
@@ -55,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
               }
             } else if (contentType.includes("text/csv")) {
               // It's ready! We have CSV in the response
-              // Convert the body to a blob and download
               const blob = await checkRes.blob();
               const downloadLink = document.createElement("a");
               downloadLink.href = URL.createObjectURL(blob);
@@ -73,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
   
         poll();
+  
       } catch (error) {
         console.error("Error triggering scraping:", error);
         successMessage.textContent = "Error triggering scraping. Please try again.";
