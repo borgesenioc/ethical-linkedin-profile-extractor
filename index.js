@@ -17,15 +17,14 @@ function generateFourDigitCode(index) {
   return String(1000 + index).slice(-4);
 }
 
-// This function maps a profile JSON to a single CSV row,
-// flattening multiple job positions into sequential experience columns.
-// For companies with multiple positions, each position appears in a different set of columns.
+// Mapping function: converts profile JSON to a single CSV row
+// Multiple job positions are flattened into sequential experience columns.
 function mapProfileToCsvRows(jsonData) {
-  // Define the CSV columns for a single row.
+  // Define CSV columns for one row.
   const columns = [
     "id", "id_type", "public_id", "profile_url", "full_name", "first_name", "last_name", "avatar",
     "headline", "location_name", "summary",
-    // Experience fields (flattened into up to 10 experiences)
+    // Experience fields (up to 10 experiences)
     ...Array.from({ length: 10 }, (_, i) => [
       `organization_${i + 1}`,
       `organization_id_${i + 1}`,
@@ -35,7 +34,7 @@ function mapProfileToCsvRows(jsonData) {
       `organization_end_${i + 1}`,
       `organization_description_${i + 1}`
     ]).flat(),
-    // Education (up to 3)
+    // Education fields (up to 3)
     ...Array.from({ length: 3 }, (_, i) => [
       `education_${i + 1}`,
       `education_degree_${i + 1}`,
@@ -43,7 +42,7 @@ function mapProfileToCsvRows(jsonData) {
       `education_start_${i + 1}`,
       `education_end_${i + 1}`
     ]).flat(),
-    // Languages (up to 3)
+    // Languages fields (up to 3)
     ...Array.from({ length: 3 }, (_, i) => [
       `language_${i + 1}`,
       `language_proficiency_${i + 1}`
@@ -53,9 +52,9 @@ function mapProfileToCsvRows(jsonData) {
 
   const csvRow = {};
 
-  // Basic profile information
+  // Basic profile info mapping
   csvRow.id = jsonData.linkedin_num_id || "";
-  csvRow.id_type = ""; // Define as needed.
+  csvRow.id_type = ""; // Set this if needed.
   csvRow.public_id = jsonData.linkedin_id || "";
   csvRow.profile_url = jsonData.url || jsonData.input_url || "";
   csvRow.full_name = jsonData.name || "";
@@ -66,8 +65,7 @@ function mapProfileToCsvRows(jsonData) {
   csvRow.location_name = jsonData.city || "";
   csvRow.summary = jsonData.about ? flattenDescription(jsonData.about) : "";
 
-  // Flatten experience:
-  // For each experience, if there are multiple positions, treat each position as a separate job experience.
+  // Flatten experience: each experience's positions become separate job experiences.
   let experienceRecords = [];
   if (jsonData.experience && Array.isArray(jsonData.experience)) {
     jsonData.experience.forEach(exp => {
@@ -83,7 +81,6 @@ function mapProfileToCsvRows(jsonData) {
           });
         });
       } else {
-        // No positions array – use the experience object itself.
         experienceRecords.push({
           organization: exp.company || "",
           organization_url: exp.url || (jsonData.current_company ? jsonData.current_company.link : "") || "",
@@ -96,7 +93,7 @@ function mapProfileToCsvRows(jsonData) {
     });
   }
   
-  // Populate experience fields (up to 10 records)
+  // Fill in up to 10 experiences
   for (let i = 0; i < 10; i++) {
     if (i < experienceRecords.length) {
       const exp = experienceRecords[i];
@@ -118,7 +115,7 @@ function mapProfileToCsvRows(jsonData) {
     }
   }
 
-  // Education mapping (up to 3)
+  // Map education (up to 3 entries)
   if (jsonData.education && Array.isArray(jsonData.education)) {
     jsonData.education.forEach((edu, index) => {
       if (index >= 3) return;
@@ -139,7 +136,7 @@ function mapProfileToCsvRows(jsonData) {
     csvRow[`education_end_${idx}`] = "";
   }
 
-  // Languages mapping (up to 3)
+  // Map languages (up to 3 entries)
   if (jsonData.languages && Array.isArray(jsonData.languages)) {
     jsonData.languages.forEach((lang, index) => {
       if (index >= 3) return;
@@ -156,18 +153,16 @@ function mapProfileToCsvRows(jsonData) {
   csvRow.languages = (jsonData.languages || []).map(lang => lang.title).join(", ");
   csvRow.skills = (jsonData.skills && Array.isArray(jsonData.skills)) ? jsonData.skills.map(skill => skill.name).join(", ") : "";
 
-  // Build the CSV row string.
   const headerRow = columns.join(",");
   const dataRow = columns.map(col => escapeCsvField(csvRow[col] || "")).join(",");
   
   return [headerRow, dataRow];
 }
 
-// Polling function to wait until the snapshot is ready
+// Polling function: checks until the scraping snapshot is ready.
 async function pollSnapshot(snapshotId, maxRetries = 10, delay = 15000) {
   const snapshotURL = `${process.env.BD_SNAPSHOT_URL || "https://api.brightdata.com/datasets/v3/snapshot"}/${snapshotId}`;
   let retries = 0;
-
   while (retries < maxRetries) {
     try {
       const getResponse = await axios.get(snapshotURL, {
@@ -175,7 +170,6 @@ async function pollSnapshot(snapshotId, maxRetries = 10, delay = 15000) {
           Authorization: `Bearer ${process.env.BD_TOKEN}`,
         },
       });
-
       if (getResponse.data.status === "running") {
         console.log(`Snapshot not ready yet. Retrying in ${delay / 1000} seconds...`);
         await new Promise((resolve) => setTimeout(resolve, delay));
@@ -192,39 +186,23 @@ async function pollSnapshot(snapshotId, maxRetries = 10, delay = 15000) {
 
 async function fetchLinkedInProfile() {
   try {
-    // Prepare the data payload
-    const data = JSON.stringify([
-      { url: "https://www.linkedin.com/in/enioborges/" },
-    ]);
-
-    // Construct the trigger API endpoint using environment variables
+    const data = JSON.stringify([{ url: "https://www.linkedin.com/in/enioborges/" }]);
     const triggerURL = `${process.env.BD_API_URL}?dataset_id=${process.env.DATASET_ID}&include_errors=true`;
-
-    // POST request to trigger the scraping collection
     const postResponse = await axios.post(triggerURL, data, {
       headers: {
         Authorization: `Bearer ${process.env.BD_TOKEN}`,
         "Content-Type": "application/json",
       },
     });
-
     console.log("Trigger response:", postResponse.data);
-
-    // Extract the snapshot ID from the response
     const snapshotId = postResponse.data.snapshot_id;
     if (!snapshotId) {
       throw new Error("No snapshot_id returned from the trigger request.");
     }
-
-    // Poll for the snapshot until it is ready
     const profileData = await pollSnapshot(snapshotId);
     console.log("Profile JSON:", profileData);
-
-    // Convert JSON to CSV (single row)
     const [csvHeader, csvRow] = mapProfileToCsvRows(profileData);
     const csvContent = `${csvHeader}\n${csvRow}`;
-    
-    // Write the CSV content to a file named 'profile.csv'
     fs.writeFileSync("profile.csv", csvContent);
     console.log("CSV file generated: profile.csv");
   } catch (error) {

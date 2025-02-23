@@ -36,6 +36,11 @@ body {
     font-size: 1rem;
     resize: vertical;
   }
+
+  .input-section textarea::placeholder {
+    font-style: italic;
+    font-size: 14px;
+  }
   
   .actions {
     display: flex;
