@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     const convertButton = document.getElementById("convertButton1");
-    const downloadButton = document.getElementById("downloadAllButton");
     const jsonInput = document.getElementById("jsonInput1");
     const successMessage = document.getElementById("successMessage1");
   
