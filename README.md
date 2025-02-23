@@ -2,7 +2,7 @@
 
 A simple tool to scrape LinkedIn profile data using Bright Data, poll for completion on the client side, and download the result as a single‐row CSV.
 
-Flow
+## Flow
 	1.	/api/convert – Triggers the Bright Data job and returns a snapshot ID immediately.
 
 const response = await fetch("/api/convert", {
@@ -23,7 +23,7 @@ if (res.headers.get("content-type")?.includes("text/csv")) {
 
 	3.	Client-Side – Polls /api/checkSnapshot until the CSV is ready, then automatically downloads it.
 
-Project Structure
+## Project Structure
 
 my-project/
 ├─ api/
@@ -40,7 +40,7 @@ Environment Variables
 	•	BD_TOKEN – Bright Data API token
 	•	BD_SNAPSHOT_URL (optional)
 
-Setup
+## Setup
 	1.	Install dependencies:
 
 npm install
