@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkedIn Profile Extractor</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>LinkedIn Profile Extractor</h1>
+    </header>
+    <main>
+      <!-- Profile Input Section -->
+      <section class="input-section">
+        <h2>Paste the LinkedIn profile URL below:</h2>
+        <div id="inputContainer1">
+          <textarea id="jsonInput1" placeholder="https://www.linkedin.com/in/example-profile-1"></textarea>
+        </div>
+        <p id="successMessage1" class="hidden">Success! The profile is ready for download.</p>
+      </section>
+      <section class="actions">
+        <button id="convertButton1">Convert to CSV</button>
+      </section>
+    </main>
+    <footer>
+      <p>Version: 1.0.1</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
