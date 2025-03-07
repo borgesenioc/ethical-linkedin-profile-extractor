@@ -79,14 +79,6 @@ button:disabled {
   font-size: 1.1rem; /* Slightly larger font */
 }
 
-footer {
-  text-align: center;
-  padding: 15px;
-  font-size: 1.2rem; /* Responsive font size */
-  background-color: #2e8375; /* Footer color matches header */
-  color: white;
-}
-
 button.enabled {
   background-color: #28a745;
   color: white;
