@@ -1,7 +1,11 @@
 .header {
-  background-color: #b1c4c0; /* Adjusted to a greenish-blue */
-  color: rgb(12, 12, 12);
-  padding: 20px 0;
+  background-color: #888a8a; /* Adjusted to a greenish-blue */
+  color: #ffffff;
+  padding: 40px 0;
   text-align: center;
-  font-size: 1.5rem;
+}
+
+.header__title {
+  font-size: 35px;
+  line-height: 1.074;
 }
