@@ -1,31 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-US">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LinkedIn Profile Extractor</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Ethical LinkedIn Profile Extractor</title>
+    <meta
+      name="description"
+      content="A fast and compliant way to extract a LinkedIn profile to a CSV with no acess to LinkedIn's API."
+      name="author"
+      content="Enio Borges"
+      name="keywords"
+      content="crud api linkedin profile scraper profile csv"
+    />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="icon" href="./favicon.ico" />
   </head>
-  <body>
-    <header>
-      <h1>LinkedIn Profile Extractor</h1>
-    </header>
-    <main>
-      <!-- Profile Input Section -->
-      <section class="input-section">
-        <h2>Paste the LinkedIn profile URL below:</h2>
-        <div id="inputContainer1">
-          <textarea id="jsonInput1" placeholder="https://www.linkedin.com/in/example-profile-1"></textarea>
-        </div>
-        <p id="successMessage1" class="hidden">Success! The profile is ready for download.</p>
-      </section>
-      <section class="actions">
-        <button id="convertButton1">Convert to CSV</button>
-      </section>
-    </main>
-    <footer>
-      <p>Version: 1.0.1</p>
-    </footer>
-    <script src="script.js"></script>
+  <body class="body">
+    <div class="page">
+      <header class="header">
+        <h1 class="header__title">Ethical LinkedIn Profile Extractor</h1>
+      </header>
+      <main>
+        <!-- Profile Input Section -->
+        <section class="input-section">
+          <h2>Paste the LinkedIn profile URL below:</h2>
+          <div id="inputContainer1">
+            <textarea
+              id="jsonInput1"
+              placeholder="https://www.linkedin.com/in/example-profile-1"
+            ></textarea>
+          </div>
+          <p id="successMessage1" class="hidden">
+            Success! The profile is ready for download.
+          </p>
+        </section>
+        <section class="actions">
+          <button id="convertButton1">Convert to CSV</button>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__version">Version: 1.0.2</p>
+        <p class="footer__copyright">© Enio Borges 2025</p>
+      </footer>
+      <script src="script.js"></script>
+    </div>
   </body>
 </html>

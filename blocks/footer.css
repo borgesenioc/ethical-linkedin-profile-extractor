@@ -1,0 +1,17 @@
+.footer {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 15px;
+  font-size: 1.2rem; /* Responsive font size */
+  background-color: #888a8a; /* Footer color matches header */
+  color: #ffffff;
+  gap: 15px;
+}
+
+.footer__version,
+.footer__copyright {
+  font-size: 14px;
+  line-height: 1.05;
+}

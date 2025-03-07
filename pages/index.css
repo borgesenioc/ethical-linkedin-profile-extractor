@@ -1,0 +1,116 @@
+@import url('../vendor/normalize.css');
+@import url('../vendor/fonts.css');
+@import url('../blocks/body.css');
+@import url('../blocks/page.css');
+@import url('../blocks/header.css');
+@import url('../blocks/content.css');
+@import url('../blocks/hero.css');
+@import url('../blocks/footer.css');
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+main {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.input-section textarea {
+  width: 95%;
+  height: 20px; /* Consistent height */
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.input-section textarea::placeholder {
+  font-style: italic;
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #043d99; /* Adjusted button color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+button:hover {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+  background-color: #e0e0e0; /* Light gray for disabled buttons */
+  color: #9e9e9e; /* More contrast for disabled text */
+  cursor: not-allowed;
+}
+
+.badge {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  background-color: #d1d5db; /* Gray before success */
+  color: #333;
+}
+
+.badge.success {
+  background-color: #3ba17c; /* Adjusted to greenish-blue for success */
+  color: white;
+  padding: 15px; /* Larger padding for success badge */
+  font-size: 1.1rem; /* Slightly larger font */
+}
+
+button.enabled {
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.hidden {
+  display: none;
+}
+
+#downloadAllButton {
+  display: block;
+  margin: 20px auto; /* Centers the button horizontally */
+  padding: 15px 25px; /* Makes the button larger */
+  font-size: 18px; /* Increases font size */
+  background-color: #03a353; /* Primary color for the button */
+  color: #fff; /* White text */
+  border: none; /* Removes border */
+  border-radius: 5px; /* Adds slight rounding to the corners */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+#downloadAllButton:hover {
+  background-color: #027e40; /* Darker shade on hover */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Hover shadow effect */
+}
