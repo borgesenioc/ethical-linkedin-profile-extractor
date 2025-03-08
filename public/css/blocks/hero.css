@@ -25,3 +25,8 @@
   font-style: italic;
   font-size: 14px;
 }
+
+.hero__success-message {
+  font-size: 20px;
+  line-height: 1.05;
+}
