@@ -55,10 +55,10 @@ This project provides a comliant, low-cost way to extract LinkedIn profile data 
 ### File Structure
 
 The project is structured to keep client-side assets and server code separate for clarity and maintainability:
-
 ethical-linkedin-profile-extractor/
 ├── public/
 │ ├── index.html # Main HTML file
+│ ├── favicon.ico # Favicon for the site
 │ ├── css/
 │ │ ├── pages/
 │ │ │ └── index.css # Page-specific styles
