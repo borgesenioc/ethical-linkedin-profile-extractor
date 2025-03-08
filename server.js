@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 // Parse incoming JSON bodies
 app.use(express.json());
 
-// Register your API endpoints
+// Register my API endpoints
 app.post('/js/api/convert', (req, res) => convertHandler(req, res));
 app.get('/js/api/checkSnapshot', (req, res) => checkSnapshotHandler(req, res));
 

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!convertRes.ok) throw new Error('Failed to trigger scraping');
       const { snapshotId } = await convertRes.json();
 
-      successMessage.textContent = `Snapshot triggered: ${snapshotId}. Polling...`;
+      successMessage.textContent = `LinkedIn profile found. We'll start preparing your CSV.`;
 
       // 2) Poll for readiness
       let retries = 0;
@@ -43,13 +43,25 @@ document.addEventListener('DOMContentLoaded', () => {
             // Likely still "running"
             const data = await checkRes.json();
             if (data.status === 'running') {
-              if (retries < maxRetries) {
+              if (retries === 0) {
                 retries++;
-                successMessage.textContent = `Snapshot not ready yet. Retrying in ${delay / 1000}s... (Attempt ${retries}/${maxRetries})`;
+                successMessage.innerHTML = `Building the CSV might take a minute.<br><br>In the meantime, please note: this app only scrapes profile <strong>data isn't behind login</strong>.`;
+                setTimeout(poll, delay);
+              } else if (retries === 1) {
+                retries++;
+                successMessage.innerHTML = `Parsing data to the CSV.<br><br>Users choose which data goes public, which often includes the full profile.`;
+                setTimeout(poll, delay);
+              } else if (retries === 2 || retries === 3) {
+                retries++;
+                successMessage.innerHTML = `We are almost there...`;
+                setTimeout(poll, delay);
+              } else if (retries > 3 && retries < maxRetries) {
+                retries++;
+                successMessage.innerHTML = `Finishing the CSV. This one took a bit longer than usual.`;
                 setTimeout(poll, delay);
               } else {
                 successMessage.textContent =
-                  'Max retries reached. Still not ready.';
+                  'Still not ready and our API reached the limit attempts. Sorry, we failed this time!';
               }
             } else {
               successMessage.textContent = 'Unexpected JSON response.';
@@ -62,7 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
             downloadLink.download = `profile_${new Date().toISOString()}.csv`;
             downloadLink.click();
 
-            successMessage.textContent = 'Success! CSV downloaded.';
+            successMessage.textContent =
+              'Success! You can download the CSV now.';
           } else {
             successMessage.textContent = 'Unknown response type.';
           }
