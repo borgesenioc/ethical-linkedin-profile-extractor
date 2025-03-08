@@ -20,16 +20,17 @@
       <header class="header">
         <h1 class="header__title">Ethical LinkedIn Profile Extractor</h1>
       </header>
-      <main>
-        <!-- Profile Input Section -->
-        <section class="input-section">
-          <h2>Paste the LinkedIn profile URL below:</h2>
-          <div id="inputContainer1">
-            <textarea
-              id="jsonInput1"
-              placeholder="https://www.linkedin.com/in/example-profile-1"
-            ></textarea>
-          </div>
+      <main class="content">
+        <!-- Hero division for inputs -->
+        <section class="hero">
+          <h2 class="hero__heading">Paste the LinkedIn profile URL below</h2>
+          <input
+            type="text"
+            class="hero__textbox"
+            id="hero"
+            placeholder="https://www.linkedin.com/in/example-profile-1"
+          />
+
           <p id="successMessage1" class="hidden">
             Success! The profile is ready for download.
           </p>

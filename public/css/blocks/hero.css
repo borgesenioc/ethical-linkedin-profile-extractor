@@ -1,0 +1,27 @@
+.hero {
+  width: 70%;
+  height: auto;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+  resize: vertical;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__heading {
+  font-size: 35px;
+  line-height: 1.07;
+}
+
+.hero__textbox {
+  width: 80%;
+  height: 20px;
+}
+
+.hero__textbox::placeholder {
+  font-style: italic;
+  font-size: 14px;
+}
