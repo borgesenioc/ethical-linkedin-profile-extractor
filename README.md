@@ -1,6 +1,10 @@
 # Ethical LinkedIn Profile Extractor
 
-An open-source tool that ethically extracts publicly available LinkedIn profile data and converts it into CSV format. This simple, lightweight solution leverages Bright Data’s free starting funds to deliver profile data for FREE (for the first 1000 profiles or so)—making it an efficient alternative to manual PDF/ZIP exports.
+An open-source web app that extracts publicly available LinkedIn profile data and converts into CSV.
+
+It is composed of a minimalistic BEM frontend, an express JS server, and deployed by Vercel.
+
+Profile data acquired from Bright Data’s Scraper API, so free starting funds for the first 1000 profiles.
 
 ---
 
