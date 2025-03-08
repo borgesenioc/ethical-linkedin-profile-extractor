@@ -64,10 +64,6 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.hidden {
-  display: none;
-}
-
 #downloadAllButton {
   display: block;
   margin: 20px auto; /* Centers the button horizontally */
