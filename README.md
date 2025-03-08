@@ -1,22 +1,22 @@
 # Ethical LinkedIn Profile Extractor
 
-An open-source tool that ethically extracts publicly available LinkedIn profile data and converts it into CSV format. This simple, lightweight solution leverages Bright Data’s free starting funds to deliver profile data at under 20% of a cent—making it an efficient alternative to manual PDF/ZIP exports.
+An open-source tool that ethically extracts publicly available LinkedIn profile data and converts it into CSV format. This simple, lightweight solution leverages Bright Data’s free starting funds to deliver profile data for FREE (for the first 1000 profiles or so)—making it an efficient alternative to manual PDF/ZIP exports.
 
 ---
 
 ## Live Demo
 
 Check out the live version here:  
-[https://linkedin-private-extractor.vercel.app/](https://linkedin-private-extractor.vercel.app/)
+[https://ethical-linkedin-profile-extractor.vercel.app/](https://ethical-linkedin-profile-extractor.vercel.app/)
 
 ---
 
 ## Brief Context
 
-This project provides an ethical, low-cost way to extract LinkedIn profile data that is publicly accessible (i.e., not behind login) and convert it to CSV for rapid prototyping. It bypasses LinkedIn’s CSV and API limitations, giving users quick, accurate results using a streamlined, minimal codebase.
+This project provides a comliant, low-cost way to extract LinkedIn profile data that is publicly accessible (i.e., not behind login) and convert it to CSV for rapid prototyping. It bypasses LinkedIn’s CSV and API limitations, giving users quick, accurate results using a streamlined, minimal codebase.
 
-- **Low-cost & Fast:** Profile data extraction at a fraction of a cent.
-- **Ethical & Open-Source:** Uses publicly available data only.
+- **Low-cost & Fast:** Profile data extraction for free or for a fraction of a cent if you go over Bright Data's few thousand free API calls.
+- **Ethical & Open-Source:** Uses publicly available data only. Most LinkedIn profiles are fully available in incognito mode, but each LinkedIn user can choose their own privacy levels.
 - **Efficient:** Converts complex profile data (including multiple positions) into a single CSV row.
 
 ---
@@ -34,15 +34,17 @@ This project provides an ethical, low-cost way to extract LinkedIn profile data 
 
 ## Draft Solution
 
-1. **User Input:**  
+1. **User Input:**
+
    - The user enters a LinkedIn profile URL into a single-line input field.
    - On clicking "Convert to CSV", the script reads the URL.
 
-2. **Data Extraction:**  
+2. **Data Extraction:**
+
    - The script makes a (simulated) API call to trigger a scraping process.
    - The returned profile JSON is processed by a mapping function that flattens and converts the data into CSV format.
 
-3. **CSV Generation & Download:**  
+3. **CSV Generation & Download:**
    - Once the conversion is complete, a confirmation message is displayed.
    - The CSV file is then generated and downloaded automatically.
 
@@ -56,24 +58,23 @@ The project is structured to keep client-side assets and server code separate fo
 
 ethical-linkedin-profile-extractor/
 ├── public/
-│   ├── index.html                # Main HTML file
-│   ├── css/
-│   │   ├── pages/
-│   │   │   └── index.css         # Page-specific styles
-│   │   └── blocks/
-│   │       └── header.css        # Header styling (see note below)
-│   ├── images/
-│   │   └── profile_icon.png      # Icon used in the header
-│   └── js/
-│       ├── events/
-│       │   └── domEvents.js      # Client-side event handlers
-│       └── api/
-│           ├── convert.js        # API route for triggering scraping
-│           └── checkSnapshot.js  # API route for checking CSV readiness
-├── server.js                     # Express server configuration
-├── package.json                  # Project metadata and dependencies
-└── .env                          # Environment variables for API credentials
-
+│ ├── index.html # Main HTML file
+│ ├── css/
+│ │ ├── pages/
+│ │ │ └── index.css # Page-specific styles
+│ │ └── blocks/
+│ │ └── header.css # Header styling (see note below)
+│ ├── images/
+│ │ └── profile_icon.png # Icon used in the header
+│ └── js/
+│ ├── events/
+│ │ └── domEvents.js # Client-side event handlers
+│ └── api/
+│ ├── convert.js # API route for triggering scraping
+│ └── checkSnapshot.js # API route for checking CSV readiness
+├── server.js # Express server configuration
+├── package.json # Project metadata and dependencies
+└── .env # Environment variables for API credentials
 
 > **Note:**  
 > In `header.css`, the header icon is centered using `position: absolute;` along with `transform: translate(-50%, -110%);` to achieve the desired layout.
@@ -92,6 +93,7 @@ These dependencies ensure that the project remains lightweight while still being
 ## Server Structure
 
 The Express server (`server.js`) is responsible for:
+
 - Serving static files from the `public` directory.
 - Handling API endpoints under `/js/api/` for both converting the profile data and checking the scraping status.
 
@@ -105,7 +107,7 @@ Below is a screenshot of the main screen:
 
 ![Main Screen](./path/to/screenshot.png)
 
-*Note: Replace `./path/to/screenshot.png` with the actual path to your screenshot image file.*
+_Note: Replace `./path/to/screenshot.png` with the actual path to your screenshot image file._
 
 ---
 
