@@ -23,13 +23,21 @@
       <main class="content">
         <!-- Hero division for inputs -->
         <section class="hero">
-          <h2 class="hero__heading">Paste the LinkedIn profile URL below</h2>
-          <input
-            type="text"
-            class="hero__textbox"
-            id="urlInput"
-            placeholder="https://www.linkedin.com/in/example-profile-1"
-          />
+          <h2 class="hero__heading">Convert a profile to CSV in 1 minute</h2>
+          <ol class="hero__list-instructions">
+            <li>
+              Copy and paste the Linkedin profile URL here.
+              <input
+                type="text"
+                class="hero__textbox"
+                id="urlInput"
+                placeholder="https://www.linkedin.com/in/example-profile-1"
+              />
+            </li>
+            <li>Hit Convert to CSV and wait for a minute.</li>
+            <li>Save the CSV file.</li>
+            <li>Refresh to restart.</li>
+          </ol>
 
           <p class="hero__success-message" id="successMessage1">
             Success! You can download the CSV now.

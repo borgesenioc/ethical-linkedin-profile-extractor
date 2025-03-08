@@ -1,8 +1,8 @@
 .hero {
   width: 60%;
   height: auto;
-  margin: 0px 0 10px 15px;
-  padding: 25px 0 45px 40px;
+  margin: 0px 0 10px 0px;
+  padding: 25px 0 25px 0;
   box-shadow: 2px 2px 10px rgb(184, 184, 184);
   background-color: #f7f7f7e5;
   resize: vertical;
@@ -11,11 +11,28 @@
 }
 
 .hero__heading {
-  font-size: 35px;
+  margin-top: 10px;
+  padding: 0;
+  font-size: 40px;
   line-height: 1.07;
+  align-self: center;
+}
+
+.hero__list-instructions {
+  display: flex;
+  flex-direction: column;
+  margin-left: 35px;
+  gap: 10px;
+  font-size: 18px;
+}
+
+.hero__url-instruction {
+  margin-bottom: 3px;
 }
 
 .hero__textbox {
+  margin: 0;
+  padding: 0;
   width: 80%;
   height: 20px;
   padding: 2px 0 2px 6px;
