@@ -1,18 +1,21 @@
 .actions {
   display: flex;
   justify-content: flex-start;
-  margin-top: 30px;
+  margin: 60px 0 40px 0px;
   width: 60%;
+  height: auto;
   padding: 0;
 }
 
 .actions__convert-button {
-  padding: 15px 30px;
+  margin: -14px;
+  padding: 20px 35px;
   font-size: 18px;
   line-height: 1.08;
-  font-weight: 700;
+  font-weight: 600;
   color: white;
-  background-color: #043d99; /* Adjusted button color */
+  background-color: #1a458b;
+  box-shadow: 2px 2px 10px rgb(184, 184, 184);
   border: none;
   border-radius: 5px;
   cursor: pointer;
