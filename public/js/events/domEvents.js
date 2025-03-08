@@ -1,11 +1,11 @@
 // public/js/events/domEvents.js
 document.addEventListener('DOMContentLoaded', () => {
   const convertButton = document.getElementById('convertButton1');
-  const jsonInput = document.getElementById('jsonInput1');
+  const urlInput = document.getElementById('urlInput');
   const successMessage = document.getElementById('successMessage1');
 
   convertButton.addEventListener('click', async () => {
-    const linkedinUrl = jsonInput.value.trim();
+    const linkedinUrl = urlInput.value.trim();
     if (!linkedinUrl) {
       alert('Please enter a LinkedIn profile URL.');
       return;

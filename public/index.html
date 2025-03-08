@@ -12,30 +12,46 @@
       name="keywords"
       content="crud api linkedin profile scraper profile csv"
     />
-    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="./css/pages/index.css" />
     <link rel="icon" href="./favicon.ico" />
   </head>
   <body class="body">
     <div class="page">
       <header class="header">
         <h1 class="header__title">Ethical LinkedIn Profile Extractor</h1>
+        <img
+          class="header__icon"
+          src="../images/profile_icon.png"
+          alt="A white drawing of a person's profile as an icon."
+        />
       </header>
-      <main>
-        <!-- Profile Input Section -->
-        <section class="input-section">
-          <h2>Paste the LinkedIn profile URL below:</h2>
-          <div id="inputContainer1">
-            <textarea
-              id="jsonInput1"
-              placeholder="https://www.linkedin.com/in/example-profile-1"
-            ></textarea>
-          </div>
-          <p id="successMessage1" class="hidden">
-            Success! The profile is ready for download.
+      <main class="content">
+        <!-- Hero division for inputs -->
+        <section class="hero">
+          <h2 class="hero__heading">Convert a profile to CSV in 1 minute</h2>
+          <ol class="hero__list-instructions">
+            <li>
+              Copy and paste the Linkedin profile URL here.
+              <input
+                type="text"
+                class="hero__textbox"
+                id="urlInput"
+                placeholder="https://www.linkedin.com/in/example-profile-1"
+              />
+            </li>
+            <li>Hit Convert to CSV and wait for a minute.</li>
+            <li>Save the CSV file.</li>
+            <li>Refresh to restart.</li>
+          </ol>
+
+          <p class="hero__success-message" id="successMessage1">
+            Success! You can download the CSV now.
           </p>
         </section>
         <section class="actions">
-          <button id="convertButton1">Convert to CSV</button>
+          <button class="actions__convert-button" id="convertButton1">
+            Convert to CSV
+          </button>
         </section>
       </main>
       <footer class="footer">
