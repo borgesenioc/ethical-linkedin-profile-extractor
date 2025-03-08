@@ -1,53 +1,123 @@
-# LinkedIn Profile Extractor
+# Ethical LinkedIn Profile Extractor
 
-A simple tool to scrape LinkedIn profile data using Bright Data, poll for completion on the client side, and download the result as a single‐row CSV.
+An open-source tool that ethically extracts publicly available LinkedIn profile data and converts it into CSV format. This simple, lightweight solution leverages Bright Data’s free starting funds to deliver profile data at under 20% of a cent—making it an efficient alternative to manual PDF/ZIP exports.
 
-## Flow
-	1.	/api/convert – Triggers the Bright Data job and returns a snapshot ID immediately.
+---
 
-const response = await fetch("/api/convert", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ linkedinUrl })
-});
-const { snapshotId } = await response.json();
+## Live Demo
+
+Check out the live version here:  
+[https://linkedin-private-extractor.vercel.app/](https://linkedin-private-extractor.vercel.app/)
+
+---
+
+## Brief Context
+
+This project provides an ethical, low-cost way to extract LinkedIn profile data that is publicly accessible (i.e., not behind login) and convert it to CSV for rapid prototyping. It bypasses LinkedIn’s CSV and API limitations, giving users quick, accurate results using a streamlined, minimal codebase.
+
+- **Low-cost & Fast:** Profile data extraction at a fraction of a cent.
+- **Ethical & Open-Source:** Uses publicly available data only.
+- **Efficient:** Converts complex profile data (including multiple positions) into a single CSV row.
+
+---
+
+## Acceptance Criteria
+
+1. **Ease of Use:**  
+   Users can extract a CSV file with public LinkedIn data using a simple URL input.
+2. **Speed & Accuracy:**  
+   The CSV extraction is performed quickly and the CSV file accurately reflects the profile data.
+3. **Scalability:**  
+   The tool is built with modularity and simplicity in mind, making it easy to adapt and extend.
+
+---
+
+## Draft Solution
+
+1. **User Input:**  
+   - The user enters a LinkedIn profile URL into a single-line input field.
+   - On clicking "Convert to CSV", the script reads the URL.
+
+2. **Data Extraction:**  
+   - The script makes a (simulated) API call to trigger a scraping process.
+   - The returned profile JSON is processed by a mapping function that flattens and converts the data into CSV format.
+
+3. **CSV Generation & Download:**  
+   - Once the conversion is complete, a confirmation message is displayed.
+   - The CSV file is then generated and downloaded automatically.
+
+---
+
+## Building Blocks
+
+### File Structure
+
+The project is structured to keep client-side assets and server code separate for clarity and maintainability:
+
+ethical-linkedin-profile-extractor/
+├── public/
+│   ├── index.html                # Main HTML file
+│   ├── css/
+│   │   ├── pages/
+│   │   │   └── index.css         # Page-specific styles
+│   │   └── blocks/
+│   │       └── header.css        # Header styling (see note below)
+│   ├── images/
+│   │   └── profile_icon.png      # Icon used in the header
+│   └── js/
+│       ├── events/
+│       │   └── domEvents.js      # Client-side event handlers
+│       └── api/
+│           ├── convert.js        # API route for triggering scraping
+│           └── checkSnapshot.js  # API route for checking CSV readiness
+├── server.js                     # Express server configuration
+├── package.json                  # Project metadata and dependencies
+└── .env                          # Environment variables for API credentials
 
 
-	2.	/api/checkSnapshot – Checks the snapshot. If still running, returns JSON; if ready, returns CSV.
+> **Note:**  
+> In `header.css`, the header icon is centered using `position: absolute;` along with `transform: translate(-50%, -110%);` to achieve the desired layout.
 
-const res = await fetch(`/api/checkSnapshot?snapshotId=${snapshotId}`);
-if (res.headers.get("content-type")?.includes("text/csv")) {
-  // Download the CSV
-}
+### Dependencies
 
+- **Express:** For serving static assets and handling API endpoints.
+- **Axios:** For making HTTP requests to the scraping API.
+- **Dotenv:** For managing environment variables.
+- **Prettier:** For code formatting and consistency.
 
-	3.	Client-Side – Polls /api/checkSnapshot until the CSV is ready, then automatically downloads it.
+These dependencies ensure that the project remains lightweight while still being powerful and extendable.
 
-## Project Structure
+---
 
-my-project/
-├─ api/
-│  ├─ convert.js       # Triggers Bright Data scraping
-│  └─ checkSnapshot.js # Checks if snapshot is ready, returns CSV
-├─ index.html          # Simple UI
-├─ script.js           # Client-side polling logic
-├─ package.json
-└─ ...
+## Server Structure
 
-Environment Variables
-	•	BD_API_URL – e.g. https://api.brightdata.com/datasets/v3/trigger
-	•	DATASET_ID – Your Bright Data dataset ID
-	•	BD_TOKEN – Bright Data API token
-	•	BD_SNAPSHOT_URL (optional)
+The Express server (`server.js`) is responsible for:
+- Serving static files from the `public` directory.
+- Handling API endpoints under `/js/api/` for both converting the profile data and checking the scraping status.
 
-## Setup
-	1.	Install dependencies:
+This separation keeps the code modular and allows you to maintain the client-side logic (DOM interactions) separately from the server-side API logic.
 
-npm install
+---
 
+## Screenshots
 
-	2.	Deploy to Vercel or run locally (vercel dev), ensuring environment variables are set.
+Below is a screenshot of the main screen:
 
-License
+![Main Screen](./path/to/screenshot.png)
 
-MIT (or your chosen license)
+*Note: Replace `./path/to/screenshot.png` with the actual path to your screenshot image file.*
+
+---
+
+## Check All My Projects
+
+For more projects and details, visit:  
+[Portfolio Projects - Enio Borges](https://www.notion.so/Portfolio-Projects-Enio-Borges-9a05de4958944474bcc4579251e99f27?pvs=21)
+
+---
+
+## Final Thoughts
+
+The **Ethical LinkedIn Profile Extractor** is designed to be simple, modular, and easy to understand—even for engineers who are new to the project. With a clear file structure and minimal dependencies, this tool exemplifies an efficient approach to solving a common problem with LinkedIn data extraction.
+
+Feel free to fork, contribute, or use this project as a starting point for your own developments!
