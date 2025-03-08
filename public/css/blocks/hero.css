@@ -1,11 +1,10 @@
 .hero {
-  width: 70%;
+  width: 60%;
   height: auto;
-  margin-bottom: 10px;
+  margin: 0px 0 20px 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 10px;
-  font-size: 1rem;
+  padding: 25px 0 35px 40px;
   resize: vertical;
   display: flex;
   flex-direction: column;
