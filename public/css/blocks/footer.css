@@ -17,3 +17,19 @@
   font-size: 14px;
   line-height: 1.05;
 }
+/* No update on this frame
+@media screen and (max-width: 1100px) {
+}
+*/
+
+/*
+@media screen and (max-width: 898px) {
+}
+*/
+
+@media screen and (max-width: 692px) {
+  .footer__version,
+  .footer__copyright {
+    font-size: 12px;
+  }
+}
