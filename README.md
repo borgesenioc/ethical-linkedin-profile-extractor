@@ -62,6 +62,7 @@ This project provides a comliant, low-cost way to extract LinkedIn profile data 
 
 ### File Structure
 
+```
 The project is structured to keep client-side assets and server code separate for clarity and maintainability:
 ethical-linkedin-profile-extractor/
 ├── public/
@@ -83,6 +84,7 @@ ethical-linkedin-profile-extractor/
 ├── server.js # Express server configuration
 ├── package.json # Project metadata and dependencies
 └── .env # Environment variables for API credentials
+```
 
 ### Dependencies
 
