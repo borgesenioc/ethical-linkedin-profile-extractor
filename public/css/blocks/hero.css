@@ -11,11 +11,12 @@
 }
 
 .hero__heading {
-  margin-top: 10px;
+  margin: 10px 15px 0 15px;
   padding: 0;
-  font-size: 40px;
+  font-size: 36px;
   line-height: 1.07;
   align-self: center;
+  text-align: center;
 }
 
 .hero__list-instructions {
@@ -45,4 +46,50 @@
 
 .hero__success-message {
   display: none;
+}
+
+@media screen and (max-width: 1100px) {
+  .hero__heading {
+    margin: 0;
+    font-size: 28px;
+  }
+  .hero__list-instructions {
+    margin-left: 30px;
+    gap: 8px;
+    font-size: 14px;
+  }
+  .hero__textbox::placeholder {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 898px) {
+  .hero {
+    width: 70%;
+    padding: 20px 0 15px 0;
+  }
+  .hero__heading {
+    font-size: 27px;
+  }
+}
+
+@media screen and (max-width: 692px) {
+  .hero {
+    width: 90%;
+    padding: 0;
+  }
+  .hero__heading {
+    margin: 0 10px;
+    font-size: 27px;
+  }
+
+  .hero__list-instructions {
+    margin: 0;
+    padding: 15px 0 0 18px;
+    gap: 8px;
+    font-size: 14px;
+  }
+  .hero__textbox::placeholder {
+    font-size: 12px;
+  }
 }

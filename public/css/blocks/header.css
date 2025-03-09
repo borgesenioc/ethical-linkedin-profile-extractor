@@ -22,9 +22,11 @@
   height: 40px;
 }
 
-@media screen and (max-width: 1024px) {
-  /* no updates for this frame */
+/*
+@media screen and (max-width: 1100px) {
+   no updates for this frame 
 }
+*/
 
 @media screen and (max-width: 898px) {
   .header__title {
