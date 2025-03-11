@@ -1,4 +1,4 @@
-// public/js/api/checkSnapshot.js
+// public/api/checkSnapshot.js
 import dotenv from 'dotenv';
 dotenv.config();
 import axios from 'axios';
@@ -225,7 +225,7 @@ export default async function handler(req, res) {
     );
     return res.status(200).send(csvContent);
   } catch (error) {
-    console.error('Error in /js/api/checkSnapshot:', error.message);
+    console.error('Error in /api/checkSnapshot:', error.message);
     return res.status(500).json({ error: error.message });
   }
 }

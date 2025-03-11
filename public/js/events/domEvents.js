@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       // 1) Trigger the job and get the snapshotId
-      const convertRes = await fetch('/js/api/convert', {
+      const convertRes = await fetch('/api/convert', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ linkedinUrl }),
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
       async function poll() {
         try {
           const checkRes = await fetch(
-            `/js/api/checkSnapshot?snapshotId=${snapshotId}`
+            `/api/checkSnapshot?snapshotId=${snapshotId}`
           );
           if (!checkRes.ok) throw new Error('Check snapshot failed');
 
