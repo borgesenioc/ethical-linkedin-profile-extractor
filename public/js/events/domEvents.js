@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     successMessage.textContent = 'Triggering scraping...';
-    successMessage.classList.remove('hidden');
+    successMessage.style.display = 'block';
 
     try {
       // 1) Trigger the job and get the snapshotId
