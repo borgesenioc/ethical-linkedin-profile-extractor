@@ -1,12 +1,12 @@
 # Ethical LinkedIn Profile Extractor
 
-Non-corporate developers have a hard time acessing the LinkedIn API to extract user-profile data.
+Non-corporate developers have a hard time accessing the LinkedIn API to extract user-profile data.
 
 On the other hand, scraping LinkedIn profiles with bots and browser-controlled apps is unethical and risky.
 
-This solution addresses both concerns: it;s open-source web app that extracts publicly available LinkedIn profile data and converts into CSV.
+This solution addresses both concerns: it is an open-source web app that extracts publicly available LinkedIn profile data and converts it into CSV.
 
-It is composed of a minimalistic BEM frontend, an express JS server, and by Vercel deployment.
+It is composed of a minimalistic BEM frontend, an Express JS server, and deployed on Vercel.
 
 The LinkedIn profile data is acquired from Bright Data’s Scraper API, so it has free starting funds for the first 1000 profiles for any developer forking this repo.
 
@@ -58,8 +58,6 @@ This project provides a comliant, low-cost way to extract LinkedIn profile data 
 
 ---
 
-## Building Blocks
-
 ### File Structure
 
 ```
@@ -102,7 +100,7 @@ These dependencies ensure that the project remains lightweight while still being
 The Express server (`server.js`) is responsible for:
 
 - Serving static files from the `public` directory.
-- Handling API endpoints under `/js/api/` for both converting the profile data and checking the scraping status.
+- Handling API endpoints under `/api/` for both converting the profile data and checking the scraping status.
 
 This separation keeps the code modular and allows you to maintain the client-side logic (DOM interactions) separately from the server-side API logic.
 
