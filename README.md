@@ -15,7 +15,7 @@ The LinkedIn profile data is acquired from Bright Data’s Scraper API, so it ha
 ## Live Demo
 
 Check out the live version here:  
-[https://linkedin-private-extractor-4goy.vercel.app//](https://linkedin-private-extractor-4goy.vercel.app/)
+[https://linkedin-private-extractor-4goy.vercel.app/](https://linkedin-private-extractor-4goy.vercel.app/)
 
 ---
 
